@@ -32,15 +32,23 @@ export const EventProvider = props => {
         return fetch(`http://localhost:8000/events/${eventId}/signup`, {
             method: "POST",
             headers:{
-                "Content-Type": "application/json",
-                "Accept": "application/json",
+                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            }
+        })
+            .then(getEvents)
+    }
+
+    const leaveEvent = eventId => {
+        return fetch(`http://localhost:8000/events/${eventId}/signup`, {
+            method: "DELETE",
+            headers:{
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
             }
         })
             .then(getEvents)
     }
     return (
-        <EventContext.Provider value={{events, getEvents, createEvent, joinEvent}} >
+        <EventContext.Provider value={{events, getEvents, createEvent, joinEvent, leaveEvent}} >
             { props.children }
         </EventContext.Provider>
     )

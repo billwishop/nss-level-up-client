@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import './Event.css'
 
 export const EventList = props => {
-    const {events, getEvents, joinEvent} = useContext(EventContext)
+    const {events, getEvents, joinEvent, leaveEvent} = useContext(EventContext)
 
     const history = useHistory()
 
@@ -39,10 +39,17 @@ export const EventList = props => {
                                 })
                             }
                         </div>
-                        <button className="btn btn-2"
+                        {
+                            e.joined
+                            ? <button className="btn btn-3"
+                            onClick={()=> leaveEvent(e.id)}>
+                            Leave
+                            </button>
+                            : <button className="btn btn-2"
                             onClick={()=> joinEvent(e.id)}>
-                        Join
-                        </button>
+                            Join
+                            </button>
+                        }
                     </section>
                 })
             }
