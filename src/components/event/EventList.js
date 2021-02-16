@@ -1,9 +1,10 @@
 import React, {useContext, useEffect} from 'react'
 import {EventContext} from "./EventProvider"
 import { useHistory } from 'react-router-dom'
+import './Event.css'
 
 export const EventList = props => {
-    const {events, getEvents} = useContext(EventContext)
+    const {events, getEvents, joinEvent} = useContext(EventContext)
 
     const history = useHistory()
 
@@ -38,6 +39,10 @@ export const EventList = props => {
                                 })
                             }
                         </div>
+                        <button className="btn btn-2"
+                            onClick={()=> joinEvent(e.id)}>
+                        Join
+                        </button>
                     </section>
                 })
             }
