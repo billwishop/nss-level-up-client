@@ -13,10 +13,10 @@ export const GameForm = () => {
     */
 
     const [currentGame, setCurrentGame] = useState({
-        numberOfPlayers: 0,
+        numberOfPlayers: "",
         title: "",
         description: "",
-        gameTypeId: 0
+        gameTypeId: ""
     })
 
     /*
